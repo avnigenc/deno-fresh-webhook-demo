@@ -6,7 +6,7 @@ export interface IConfig {
   UPSTASH_REDIS_REST_TOKEN: string;
 }
 
-import { config } from "https://deno.land/x/dotenv/mod.ts";
+import { config } from "https://deno.land/x/dotenv@v3.2.0/mod.ts";
 const configuration = config() as unknown as any;
 
 export default class ConfigServiceClass {
