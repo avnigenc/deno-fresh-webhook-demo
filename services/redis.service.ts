@@ -1,13 +1,12 @@
 import { Redis } from "https://deno.land/x/upstash_redis@v1.16.0/mod.ts";
-import { ConfigService } from "./config.service.ts";
 
 export default class RedisServiceClass {
   redis: Redis;
 
   constructor() {
     this.redis = new Redis({
-      url: ConfigService.get("UPSTASH_REDIS_REST_URL") as string,
-      token: ConfigService.get("UPSTASH_REDIS_REST_TOKEN") as string,
+      url: Deno.env.get("UPSTASH_REDIS_REST_URL") as string,
+      token: Deno.env.get("UPSTASH_REDIS_REST_TOKEN") as string,
     });
   }
 

@@ -1,5 +1,4 @@
 import GitHubUser from "../interfaces/github-user.interface.ts";
-import { ConfigService } from "./config.service.ts";
 
 export class GithubServiceClass {
   #token = "";
@@ -8,8 +7,8 @@ export class GithubServiceClass {
     const rootUrl = "https://github.com/login/oauth/access_token";
 
     const options = {
-      client_id: ConfigService.get("GITHUB_OAUTH_CLIENT_ID") as string,
-      client_secret: ConfigService.get("GITHUB_OAUTH_CLIENT_SECRET") as string,
+      client_id: Deno.env.get("GITHUB_OAUTH_CLIENT_ID") as string,
+      client_secret: Deno.env.get("GITHUB_OAUTH_CLIENT_SECRET") as string,
       code,
     };
 
