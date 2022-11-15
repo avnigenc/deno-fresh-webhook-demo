@@ -23,7 +23,7 @@ const getMethodColor = (method: string) => {
   return color;
 };
 
-export default function ListItem(
+export function ListItem(
   { requestId, onClick, message, timestamp, method }: Props,
 ) {
   return (

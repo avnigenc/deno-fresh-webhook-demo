@@ -1,10 +1,10 @@
 import { MiddlewareHandlerContext } from "$fresh/server.ts";
-import { SessionService } from "../services/session.service.ts";
+import { SessionService } from "../services/index.ts";
+import { IGitHubUser } from "../interfaces/index.ts";
 import { RedisService } from "../services/redis.service.ts";
-import GitHubUser from "../interfaces/github-user.interface.ts";
 
 interface State {
-  user: GitHubUser | undefined;
+  user: IGitHubUser | undefined;
 }
 
 export async function handler(
@@ -21,8 +21,7 @@ export async function handler(
       return await context.next();
     }
 
-    const user = await RedisService.get(githubUserId!);
-    context.state.user = <GitHubUser> user;
+    context.state.user = await RedisService.get<IGitHubUser>(githubUserId!);
   }
 
   return await context.next();

@@ -2,12 +2,14 @@ import LemonIcon from "https://deno.land/x/tabler_icons_tsx@0.0.1/tsx/lemon-2.ts
 
 type Props = {
   active?: string;
+  isAuthenticated: boolean;
 };
 
-export default function Header({ active }: Props) {
+export function Header({ active, isAuthenticated = false }: Props) {
   const menus = [
+    { name: "home", href: "/" },
     { name: "about", href: "/about" },
-    { name: "logout", href: "/logout" },
+    { name: "logout", href: "/logout", hide: !isAuthenticated },
   ];
 
   return (
@@ -19,7 +21,7 @@ export default function Header({ active }: Props) {
         </div>
       </div>
       <ul class="flex items-center justify-end gap-6">
-        {menus.map((menu) => (
+        {menus.filter((menu) => !menu.hide).map((menu) => (
           <li>
             <a
               href={menu.href}

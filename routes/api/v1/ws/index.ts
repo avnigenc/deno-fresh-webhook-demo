@@ -1,5 +1,5 @@
 import { HandlerContext, Handlers } from "$fresh/server.ts";
-import { RoomChannel } from "../../../../services/channel.service.ts";
+import { RoomChannel } from "../../../../services/index.ts";
 
 export const handler: Handlers = {
   GET(request: Request, _: HandlerContext) {

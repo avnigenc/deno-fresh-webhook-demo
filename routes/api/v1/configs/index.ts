@@ -1,5 +1,5 @@
 import { HandlerContext, Handlers } from "$fresh/server.ts";
-import { IConfig } from "../../../../services/config.service.ts";
+import { IConfig } from "../../../../interfaces/index.ts";
 
 export const handler: Handlers = {
   GET(request: Request, _: HandlerContext) {

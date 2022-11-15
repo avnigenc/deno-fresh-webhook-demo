@@ -1,6 +1,6 @@
-import { IChannelMessage } from "../interfaces/channel-message.interface.ts";
+import { IChannelMessage } from "../interfaces/index.ts";
 
-export default class EventSourceServiceClass {
+export class EventSourceServiceClass {
   subscribeMessages(
     roomId: string,
     onMessage: (message: IChannelMessage) => void,

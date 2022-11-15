@@ -1,5 +1,8 @@
-import { ErrorPageProps } from "$fresh/server.ts";
+import { ServerCodePage } from "./_404.tsx";
 
-export default function Error500Page({ error }: ErrorPageProps) {
-  return <p>500 internal error: {(error as Error).message}</p>;
+export default function InternalServerError() {
+  return ServerCodePage({
+    serverCode: 500,
+    codeDescription: "Oops! Something went wrong.",
+  });
 }

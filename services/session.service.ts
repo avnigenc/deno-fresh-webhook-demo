@@ -1,6 +1,6 @@
 import { getCookies, setCookie } from "std/http/cookie.ts";
 
-export default class SessionServiceClass {
+export class SessionServiceClass {
   get(headers: Headers): string {
     const cookie = getCookies(headers) as { sessionId: string };
     return cookie.sessionId;
@@ -23,12 +23,12 @@ export default class SessionServiceClass {
     return true;
   }
 
+  // TODO:
   delete() {
-    console.log("clieck");
     setCookie(new Headers(), {
       name: "sessionId",
       value: "",
-      domain: "http://localhost:8000",
+      domain: "https://webhook-demo.deno.dev",
       sameSite: "Lax", // this is important to prevent CSRF attacks
       expires: new Date(0),
     });

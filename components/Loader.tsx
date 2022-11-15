@@ -1,8 +1,4 @@
-interface Props {
-  currentColor: string;
-}
-
-export function Loader(props: Props) {
+export function Loader() {
   return (
     <svg
       width="25"

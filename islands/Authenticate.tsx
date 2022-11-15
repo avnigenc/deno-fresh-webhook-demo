@@ -19,9 +19,7 @@ export default function Authenticate(props: AuthenticateProps) {
       state: location.href,
     };
 
-    const qs = new URLSearchParams(options);
-
-    location.href = `${rootURl}?${qs.toString()}`;
+    location.href = `${rootURl}?${new URLSearchParams(options).toString()}`;
   }, []);
 
   return (

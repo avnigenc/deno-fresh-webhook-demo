@@ -1,4 +1,4 @@
-import GitHubUser from "../interfaces/github-user.interface.ts";
+import { IGitHubUser } from "../interfaces/index.ts";
 
 export class GithubServiceClass {
   #token = "";
@@ -12,10 +12,8 @@ export class GithubServiceClass {
       code,
     };
 
-    const queryString = new URLSearchParams(options).toString();
-
     const response = await fetch(
-      `${rootUrl}?${queryString}`,
+      `${rootUrl}?${new URLSearchParams(options).toString()}`,
       {
         method: "POST",
         headers: {
@@ -29,27 +27,27 @@ export class GithubServiceClass {
       throw new Error(`Failed to exchange code: ${response.statusText}`);
     }
 
-    const data = await response.json();
+    const data = await response.json() as { access_token: string };
     this.#token = data.access_token;
 
     return this.#token;
   }
 
-  async getUser(): Promise<GitHubUser> {
-    try {
-      const response = await fetch(
-        "https://api.github.com/user",
-        {
-          headers: {
-            Authorization: `Bearer ${this.#token}`,
-          },
+  async getUser(): Promise<IGitHubUser> {
+    const response = await fetch(
+      "https://api.github.com/user",
+      {
+        headers: {
+          Authorization: `Bearer ${this.#token}`,
         },
-      );
+      },
+    );
 
-      return await response.json();
-    } catch (err) {
-      throw Error(err);
+    if (!response.ok) {
+      throw new Error(`Failed to exchange code: ${response.statusText}`);
     }
+
+    return await response.json() as IGitHubUser;
   }
 }
 

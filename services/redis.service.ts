@@ -1,4 +1,4 @@
-import { Redis } from "https://deno.land/x/upstash_redis@v1.16.0/mod.ts";
+import { Redis } from "redis";
 
 export default class RedisServiceClass {
   redis: Redis;

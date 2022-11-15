@@ -11,6 +11,7 @@
     "dotenv": "https://deno.land/x/dotenv@v3.2.0/mod.ts",
     "fs": "https://deno.land/std@0.155.0/fs/mod.ts",
     "std/": "https://deno.land/std@0.160.0/",
-    "http": "https://deno.land/std@0.140.0/http/server.ts"
+    "http": "https://deno.land/std@0.140.0/http/server.ts",
+    "redis": "https://deno.land/x/upstash_redis@v1.16.0/mod.ts"
   }
 }

@@ -1,4 +1,4 @@
-import { IChannelMessage } from "../interfaces/channel-message.interface.ts";
+import { IChannelMessage } from "../interfaces/index.ts";
 
 export default class RoomChannelClass {
   private channel: BroadcastChannel | undefined;

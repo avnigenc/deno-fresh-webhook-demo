@@ -1,15 +1,15 @@
 import { useRef } from "preact/hooks";
 
 import { Loader } from "./Loader.tsx";
-import { IChannelMessage } from "../interfaces/channel-message.interface.ts";
-import ListItem from "./ListItem.tsx";
+import { IChannelMessage } from "../interfaces/index.ts";
+import { ListItem } from "./ListItem.tsx";
 
 interface Props {
   onClick: (requestId: string) => void;
   calls: IChannelMessage[];
 }
 
-export default function List({ onClick, calls }: Props) {
+export function List({ onClick, calls }: Props) {
   const callContainer = useRef<HTMLDivElement>(null);
 
   return (
@@ -18,7 +18,7 @@ export default function List({ onClick, calls }: Props) {
         <h5 className="text-xl font-bold leading-none text-gray-900">
           latest calls
         </h5>
-        <Loader currentColor={"red"} />
+        <Loader />
       </div>
       <div className="flow-root" ref={callContainer}>
         <ul role="list" className="divide-y divide-gray-300">

@@ -1,10 +1,12 @@
 import { HandlerContext, Handlers } from "$fresh/server.ts";
 
-import GitHubUser from "../../../../../interfaces/github-user.interface.ts";
+import { IGitHubUser } from "../../../../../interfaces/index.ts";
 
-import { GithubService } from "../../../../../services/github.service.ts";
+import {
+  GithubService,
+  SessionService,
+} from "../../../../../services/index.ts";
 import { RedisService } from "../../../../../services/redis.service.ts";
-import { SessionService } from "../../../../../services/session.service.ts";
 
 export const handler: Handlers = {
   async GET(request: Request, _: HandlerContext) {
@@ -13,7 +15,7 @@ export const handler: Handlers = {
     await GithubService.getAccessToken(code);
     const gitHubUser = await GithubService.getUser();
 
-    const user = await RedisService.get<GitHubUser>(gitHubUser.id.toString());
+    const user = await RedisService.get<IGitHubUser>(gitHubUser.id.toString());
     if (!user) {
       await RedisService.set(
         gitHubUser.id.toString(),

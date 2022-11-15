@@ -1,10 +1,10 @@
 import { PageProps } from "$fresh/src/server/types.ts";
-import { Head } from "$fresh/runtime.ts";
 import { HandlerContext, Handlers } from "$fresh/src/server/types.ts";
 
 import Hero from "../islands/Hero.tsx";
 
-import GitHubUser from "../interfaces/github-user.interface.ts";
+import { IGitHubUser } from "../interfaces/index.ts";
+import { Footer, Header } from "../components/index.ts";
 
 export const handler: Handlers = {
   GET(_: Request, context: HandlerContext) {
@@ -12,14 +12,15 @@ export const handler: Handlers = {
   },
 };
 
-export default function Home(props: PageProps<GitHubUser | null>) {
+export default function Home(props: PageProps<IGitHubUser | null>) {
   return (
     <>
-      <Head>
-        <title>Webhook manager</title>
-      </Head>
       <div class="p-4 mx-auto max-w">
-        <Hero user={props?.data ? props?.data : null} />
+        <div className="isolate bg-white flex flex-col h-screen justify-start">
+          <Header active={props.url.pathname} isAuthenticated={!!props.data} />
+          <Hero user={props?.data ? props?.data : null} />
+          <Footer />
+        </div>
       </div>
     </>
   );

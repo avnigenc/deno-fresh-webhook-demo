@@ -6,7 +6,7 @@ type Props = {
   children?: ComponentChildren;
 };
 
-export default function Footer({ children }: Props) {
+export function Footer({ children }: Props) {
   const menus = [
     {
       title: "Documentation",
