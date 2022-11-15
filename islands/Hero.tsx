@@ -1,7 +1,7 @@
 import { useEffect, useReducer, useState } from "preact/hooks";
 
 import Authenticate from "./Authenticate.tsx";
-import { IChannelMessage, IGitHubUser } from "../interfaces/index.ts";
+import { IChannelMessage, IConfig, IGitHubUser } from "../interfaces/index.ts";
 import { EventSourceService } from "../services/index.ts";
 import { List } from "../components/index.ts";
 
@@ -22,7 +22,7 @@ export default function Hero(props: { user: IGitHubUser | null }) {
 
   useEffect(() => {
     if (!props.user) {
-      callConfigs().catch();
+      getConfigs().catch();
     }
 
     let subscription: { unsubscribe(): void };
@@ -51,19 +51,18 @@ export default function Hero(props: { user: IGitHubUser | null }) {
     return () => subscription.unsubscribe();
   }, []);
 
-  const callConfigs = async () => {
-    const promises = await Promise.all(
-      [
-        "/api/v1/configs?key=GITHUB_OAUTH_CLIENT_ID",
-        "/api/v1/configs?key=GITHUB_OAUTH_CALLBACK_URL",
-      ].map((endpoint) => fetch(endpoint)),
+  const getConfigs = async () => {
+    const response = await fetch(
+      "/api/v1/configs?key=GITHUB_OAUTH_CLIENT_ID&key=GITHUB_OAUTH_CALLBACK_URL",
     );
 
-    const [r, t] = promises;
-    const clientId = await r.text();
-    const callbackUrl = await t.text();
+    const { GITHUB_OAUTH_CLIENT_ID, GITHUB_OAUTH_CALLBACK_URL } = await response
+      .json() as Partial<IConfig>;
 
-    setConfig({ clientId, callbackUrl });
+    setConfig({
+      clientId: GITHUB_OAUTH_CLIENT_ID as string,
+      callbackUrl: GITHUB_OAUTH_CALLBACK_URL as string,
+    });
   };
 
   return (

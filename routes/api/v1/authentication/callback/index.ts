@@ -15,16 +15,17 @@ export const handler: Handlers = {
     await GithubService.getAccessToken(code);
     const gitHubUser = await GithubService.getUser();
 
-    const user = await RedisService.get<IGitHubUser>(gitHubUser.id.toString());
+    const gitHubUserId = gitHubUser.id.toString();
+    const user = await RedisService.get<IGitHubUser>(gitHubUserId);
     if (!user) {
       await RedisService.set(
-        gitHubUser.id.toString(),
+        gitHubUserId,
         JSON.stringify(gitHubUser),
       );
     }
 
     const sessionId = crypto.randomUUID();
-    await RedisService.set(sessionId, gitHubUser.id.toString(), 36000);
+    await RedisService.set(sessionId, gitHubUserId, 36000);
 
     const url = new URL(request.url);
     const headers = new Headers();
