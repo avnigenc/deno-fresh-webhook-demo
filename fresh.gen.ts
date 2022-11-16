@@ -9,10 +9,9 @@ import * as $2 from "./routes/_app.tsx";
 import * as $3 from "./routes/_middleware.ts";
 import * as $4 from "./routes/api/v1/authentication/callback/index.ts";
 import * as $5 from "./routes/api/v1/configs/index.ts";
-import * as $6 from "./routes/api/v1/test.ts";
-import * as $7 from "./routes/api/v1/webhook/index.ts";
-import * as $8 from "./routes/api/v1/ws/index.ts";
-import * as $9 from "./routes/index.tsx";
+import * as $6 from "./routes/api/v1/webhook/[webhook].ts";
+import * as $7 from "./routes/api/v1/ws/index.ts";
+import * as $8 from "./routes/index.tsx";
 import * as $$0 from "./islands/Authenticate.tsx";
 import * as $$1 from "./islands/Hero.tsx";
 
@@ -24,10 +23,9 @@ const manifest = {
     "./routes/_middleware.ts": $3,
     "./routes/api/v1/authentication/callback/index.ts": $4,
     "./routes/api/v1/configs/index.ts": $5,
-    "./routes/api/v1/test.ts": $6,
-    "./routes/api/v1/webhook/index.ts": $7,
-    "./routes/api/v1/ws/index.ts": $8,
-    "./routes/index.tsx": $9,
+    "./routes/api/v1/webhook/[webhook].ts": $6,
+    "./routes/api/v1/ws/index.ts": $7,
+    "./routes/index.tsx": $8,
   },
   islands: {
     "./islands/Authenticate.tsx": $$0,

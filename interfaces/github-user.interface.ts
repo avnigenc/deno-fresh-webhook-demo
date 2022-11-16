@@ -1,4 +1,5 @@
 export interface IGitHubUser {
+  uuid: string;
   login: string;
   id: number;
   node_id: string;

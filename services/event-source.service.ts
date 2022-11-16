@@ -16,7 +16,6 @@ export class EventSourceServiceClass {
 
     return {
       unsubscribe() {
-        console.log("unsubscribed", events.url);
         events.removeEventListener("message", listener);
       },
     };

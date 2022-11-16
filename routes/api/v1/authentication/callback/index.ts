@@ -16,12 +16,12 @@ export const handler: Handlers = {
     const gitHubUser = await GithubService.getUser();
 
     const gitHubUserId = gitHubUser.id.toString();
+    const webhookId = crypto.randomUUID();
     const user = await RedisService.get<IGitHubUser>(gitHubUserId);
     if (!user) {
-      await RedisService.set(
-        gitHubUserId,
-        JSON.stringify(gitHubUser),
-      );
+      Object.assign(gitHubUser, { uuid: webhookId });
+      await RedisService.set(gitHubUserId, JSON.stringify(gitHubUser));
+      await RedisService.set(webhookId, gitHubUserId);
     }
 
     const sessionId = crypto.randomUUID();
