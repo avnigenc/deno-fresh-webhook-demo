@@ -323,7 +323,8 @@ export default function Hero(props: { user: IGitHubUser | undefined }) {
                                   </div>
                                 )}
 
-                                <div className="flex flex-col justify-center h-full pt-4">
+                                {selectedRequest && selectedRequest.body && (
+                                  <div className="flex flex-col justify-center h-full pt-4">
                                   <div className="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border">
                                     <header className="px-5 py-4 border-b border-gray-100">
                                       <h2 className="font-semibold text-gray-800">
@@ -359,6 +360,7 @@ export default function Hero(props: { user: IGitHubUser | undefined }) {
                                     </div>
                                   </div>
                                 </div>
+                                )}
                               </section>
                             </div>
                           </div>

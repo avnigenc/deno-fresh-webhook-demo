@@ -4,7 +4,7 @@ import { HandlerContext, Handlers } from "$fresh/src/server/types.ts";
 import Hero from "../islands/Hero.tsx";
 
 import { IGitHubUser } from "../interfaces/index.ts";
-import { Footer, Header, Toast } from "../components/index.ts";
+import { Footer, Header } from "../components/index.ts";
 
 export const handler: Handlers = {
   GET(_: Request, context: HandlerContext) {

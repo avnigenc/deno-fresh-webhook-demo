@@ -9,17 +9,10 @@ type Props = {
 export function Footer({ children }: Props) {
   const menus = [
     {
-      title: "Documentation",
+      title: "",
       children: [
-        { name: "Getting Started", href: "#" },
-        { name: "Guide", href: "#" },
-      ],
-    },
-    {
-      title: "Community",
-      children: [
-        { name: "Forum", href: "#" },
-        { name: "Discord", href: "#" },
+        { name: "Deno.land", href: "https://deno.land/" },
+        { name: "fresh", href: "https://fresh.deno.dev/" },
       ],
     },
   ];
@@ -47,6 +40,7 @@ export function Footer({ children }: Props) {
                 <a
                   class="text-gray-500 hover:text-gray-700"
                   href={child.href}
+                  target="_blank"
                 >
                   {child.name}
                 </a>
@@ -57,14 +51,10 @@ export function Footer({ children }: Props) {
       ))}
 
       <div class="text-gray-500 space-y-2">
-        <div class="text-xs">
-          Copyright © 2020 DenoLand<br />
-          All right reserved.
-        </div>
-
         <a
-          href="https://github.com/denoland/fresh"
+          href="https://github.com/avnigenc/deno-fresh-webhook-demo"
           class="inline-block hover:text-black"
+          target="_blank"
         >
           <BrandGithub />
         </a>
