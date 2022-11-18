@@ -325,41 +325,41 @@ export default function Hero(props: { user: IGitHubUser | undefined }) {
 
                                 {selectedRequest && selectedRequest.body && (
                                   <div className="flex flex-col justify-center h-full pt-4">
-                                  <div className="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border">
-                                    <header className="px-5 py-4 border-b border-gray-100">
-                                      <h2 className="font-semibold text-gray-800">
-                                        query
-                                      </h2>
-                                    </header>
-                                    <div className="p-3">
-                                      <div className="overflow-x-auto">
-                                        <table className="table-auto">
-                                          <tbody className="text-sm divide-y divide-gray-100">
-                                            {selectedRequest &&
-                                              Object.entries(
-                                                selectedRequest.query,
-                                              ).map(([key, value]) => (
-                                                <tr>
-                                                  <td className="p-2 whitespace-nowrap">
-                                                    <div className="flex items-center">
-                                                      <div className="font-medium text-gray-800">
-                                                        {key}
+                                    <div className="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border">
+                                      <header className="px-5 py-4 border-b border-gray-100">
+                                        <h2 className="font-semibold text-gray-800">
+                                          query
+                                        </h2>
+                                      </header>
+                                      <div className="p-3">
+                                        <div className="overflow-x-auto">
+                                          <table className="table-auto">
+                                            <tbody className="text-sm divide-y divide-gray-100">
+                                              {selectedRequest &&
+                                                Object.entries(
+                                                  selectedRequest.query,
+                                                ).map(([key, value]) => (
+                                                  <tr>
+                                                    <td className="p-2 whitespace-nowrap">
+                                                      <div className="flex items-center">
+                                                        <div className="font-medium text-gray-800">
+                                                          {key}
+                                                        </div>
                                                       </div>
-                                                    </div>
-                                                  </td>
-                                                  <td className="p-2 whitespace-nowrap">
-                                                    <div className="text-left">
-                                                      {value}
-                                                    </div>
-                                                  </td>
-                                                </tr>
-                                              ))}
-                                          </tbody>
-                                        </table>
+                                                    </td>
+                                                    <td className="p-2 whitespace-nowrap">
+                                                      <div className="text-left">
+                                                        {value}
+                                                      </div>
+                                                    </td>
+                                                  </tr>
+                                                ))}
+                                            </tbody>
+                                          </table>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
-                                </div>
                                 )}
                               </section>
                             </div>

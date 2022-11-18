@@ -9,7 +9,11 @@ export function Header({ active, isAuthenticated = false }: Props) {
   const menus = [
     { name: "home", href: "/" },
     { name: "about", href: "/about" },
-    { name: "logout", href: "/logout", hide: !isAuthenticated },
+    {
+      name: "logout",
+      href: "/api/v1/authentication/logout",
+      hide: !isAuthenticated,
+    },
   ];
 
   return (
